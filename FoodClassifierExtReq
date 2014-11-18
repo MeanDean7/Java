@@ -1,0 +1,160 @@
+/*
+Author: Bradley Dodd
+This program will take the users input for Fat, Saturates, Sugars , Salt and portion size. 
+It will then classify each one of these inputs in terms of Red, Green Amber and Red Per portion.
+This classification is done through an IF for each input.
+
+It will also calculate the percentage of recommended daily amounts. To help the user see whats going on it also has some Get statements that allow the user to see what the values are.
+*/
+public class FoodClassifierExtReq{
+	//Attributes
+	private double fat100g;
+	private double fatPerPortion;
+	private double saturates100g;
+	private double saturatesPerPortion;
+	private double sugars100g;
+	private double sugarsPerPortion;
+	private double salt100g;
+	private double saltPerPortion;
+	private double portionSize;
+	private final double FATGREEN = 3.0;
+	private final double FATRED = 20.0;
+	private final double FATPORTION = 21.0;
+	private final double FATDAILY = 70.0;
+	private final double SATURATESGREEN = 1.5;
+	private final double SATURATESRED = 5.0;
+	private final double SATURATESPORTION = 6.0;
+	private final double SATURATESDAILY = 20;
+	private final double SUGARSGREEN = 5.0;
+	private final double SUGARSRED = 12.5;	
+	private final double SUGARSPORTION = 15.0;
+	private final double SUGARSDAILY = 90;
+	private final double SALTGREEN = 0.3;
+	private final double SALTRED = 1.5;
+	private final double SALTPORTION = 2.4;
+	private final double SALTDAILY = 6;
+	//Constructor 
+	public FoodClassifierExtReq (double fat, double saturates, double sugars, double salt, double portion){
+		fat100g = fat;
+		saturates100g = saturates;
+		sugars100g = sugars;
+		salt100g = salt; 
+		portionSize = portion;
+	}
+	
+	//--------------------------------Methods--------------------
+	/*Method to classify the amount of fat
+	 This method will work out the fat per portion. It will then compare it to the classification value for Red per portion.
+	 It will then check the classification for Red per 100g.
+	 It will then check whether the value for fat per 100g is in the amber range.
+	 Finally if it isn't Red or Amber then it must be green.
+	 
+	 The result for the classification is then stored in a result string that will be printed to the screen in the User Class 
+	*/
+	public String fatClassifier(){
+	 String resultFat ="";
+		fatPerPortion = fat100g *(portionSize / 100);
+		if (fatPerPortion > FATPORTION)
+		resultFat = "Fat is Red Per Portion";
+			else if (fat100g > FATRED)
+			resultFat = "Fat is Red per 100g ";
+				else if (fat100g <= FATRED && fat100g > FATGREEN)
+					resultFat = "Fat is Amber per 100g";
+						else resultFat ="Fat is Green per 100g"; 
+		return resultFat;
+	}
+	
+	/*Method to classify the amount of saturates
+	 This method is the same as the fat method except it uses the saturates variable as input 
+	*/
+	public String saturatesClassifier(){
+		String resultSaturates ="";
+			saturatesPerPortion = saturates100g *(portionSize / 100);
+			if (saturatesPerPortion > SATURATESPORTION)
+			resultSaturates = "Saturates is Red Per Portion";
+				else if (saturates100g > SATURATESRED)
+				resultSaturates = "Saturates is Red per 100g ";
+					else if (saturates100g <= SATURATESRED && saturates100g > SATURATESGREEN)
+						resultSaturates = "Saturates is Amber per 100g";
+							else resultSaturates ="Saturates is Green per 100g"; 
+			return resultSaturates;
+	}
+	/*Method to classify the amount of salt
+	This method is the same as the other methods except it uses the salt variable as input 
+	*/ 
+	public String saltClassifier(){
+		String resultSalt ="";
+			saltPerPortion = salt100g *(portionSize / 100);
+			if (saltPerPortion > SALTPORTION)
+			resultSalt = "Salt is Red Per Portion";
+				else if (salt100g > SALTRED)
+				resultSalt = "Salt is Red per 100g ";
+					else if (salt100g <= SALTRED && salt100g > SALTGREEN)
+						resultSalt = "Salt is Amber per 100g";
+							else resultSalt ="Salt is Green per 100g"; 
+			return resultSalt;
+	}
+	/*Method to classify the amount of sugars
+	This method is also the same but it uses the sugar variable as input
+	*/
+	public String sugarsClassifier(){
+		String resultSugars ="";
+			sugarsPerPortion = sugars100g * (portionSize / 100);
+			if (sugarsPerPortion > SUGARSPORTION)
+			resultSugars = "Sugars is Red Per Portion";
+				else if (sugars100g > SUGARSRED)
+				resultSugars = "Sugars is Red per 100g ";
+					else if (sugars100g <= SUGARSRED && sugars100g > SUGARSGREEN)
+						resultSugars = "Sugars is Amber per 100g";
+							else resultSugars ="Sugars is Green per 100g"; 
+			return resultSugars;
+	}
+	//Get the amount of fat per 100g
+	public double getFat(){
+		return fat100g;
+	}
+	//Get the amount of fat per portion
+	public double getFatPerPortion(){
+		return fatPerPortion;
+	}
+	//Calculate the percent of the recommended daily amount 
+	public double fatDailyAmount(){
+		return (fatPerPortion / FATDAILY) * 100;
+	}
+	//Get the amount of saturates per 100g
+	public double getSaturates(){
+		return saturates100g;
+	}
+	//Get the amount of saturates per portion
+	public double getSaturatesPerPortion(){
+		return saturatesPerPortion;
+	}
+	//Calculate the percent of the recommended daily amount 
+	public double saturatesDailyAmount(){
+		return (saturatesPerPortion / SATURATESDAILY) * 100;
+	}
+	//Get the amount of sugars per 100g
+	public double getSugars(){
+		return sugars100g;
+	}
+	//Get the amount of sugars per portion
+	public double getSugarsPerPortion(){
+		return sugarsPerPortion;
+	}
+	//Calculate the percent of the recommended daily amount 
+	public double sugarsDailyAmount(){
+		return (sugarsPerPortion / SUGARSDAILY) * 100;
+	}
+	//Get the amount of salt per 100g
+	public double getSalt(){
+		return salt100g;
+	}
+	//Get the amount of salt per portion
+	public double getSaltPerPortion(){
+		return saltPerPortion;
+	}
+	//Calculate the percent of the recommended daily amount 
+	public double saltDailyAmount(){
+		return (saltPerPortion / SALTDAILY) * 100;
+	}
+}
