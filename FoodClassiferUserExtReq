@@ -1,0 +1,84 @@
+/*
+Author: Bradley Dodd 
+This program will take some user inputs for the fat, salt, sugar and saturates contents per 100g as well as the portion size.
+It will then classify each of the values in terms of Red, Green and Amber. (These values are based off government guidelines)
+The classification will be based off the value per 100g as well as the value per portion.
+
+It will also print the amount per 100g, per 100 and the percentage of daily amount
+*/
+import java.util.*;
+
+public class FoodClassifierUserExtReq{
+	//Main Method 
+	public static void main (String[] args) {
+	//Scanner
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please enter a value between 0 and 100 \n");
+		//Gets an input for the amount of fat per 100g
+		double infat;
+		do {
+			System.out.println("What is the amount of fat per 100g?");
+			infat = input.nextDouble();
+		}
+		//Checks if the input fat value is between 0 and 100 
+		while (infat <0 || infat >100);
+		//Gets an input for the amount of saturates per 100g
+		double insaturates;
+		do {
+			System.out.println("What is the amount of saturates per 100g?");
+			insaturates = input.nextDouble();
+		}
+		//Checks if the input saturates value is between 0 and 100 
+		while (insaturates <0 || insaturates >100);
+		//Get an input for the amount of sugar per 100g
+		double insugar;
+		do{
+			System.out.println("What is the amount of sugars per 100g?");
+			insugar = input.nextDouble();
+		}
+		//Checks if input sugar value is between 0 and 100 
+		while (insugar <0 || insugar >100);
+		//Gets an input for the amount of salt per 100g 
+		double insalt;
+		do{
+			System.out.println("What is the amount of salt per 100g?");
+			insalt = input.nextDouble();
+		}
+		//Checks if input salt value is between 0 and 100 
+		while (insalt <0 || insalt >100);
+		System.out.println("Please enter an amount larger than 0 \n");
+		//Gets the portion size 
+		double inportion;
+		do{
+			System.out.println("What is the portion size? (grams)");
+			inportion = input.nextDouble();
+		}
+		//Checks if the input portion size is greater than 0 
+		while (inportion <=0);
+	
+	//Calculations 
+		//Instantiates the FoodClassifier class with values input from keyboard 
+		FoodClassifierExtReq food1 = new FoodClassifierExtReq(infat,insaturates,insugar,insalt,inportion);
+		//Prints the classification for fat 
+		System.out.println(food1.fatClassifier());
+		//Prints the classification for saturates
+		System.out.println(food1.saturatesClassifier());
+		//Prints the classification for the sugars 
+		System.out.println(food1.sugarsClassifier());
+		//Prints the classification for the salt 
+		System.out.println(food1.saltClassifier());
+		System.out.println("\n\n");
+		//Prints amount the amount of fat in 100g, the portion and the percentage of the recommended daily amount 
+		System.out.println("Fat:  " + food1.getFat() + "g  per 100g | " + food1.getFatPerPortion() + "g  per portion \t");
+		System.out.printf("%.1f",  food1.fatDailyAmount()); System.out.println("% of the daily amount \n");
+		//Prints out the amount of saturates in 100g, the portion and the percentage of the recommended daily amount 
+		System.out.println("Saturates:  " + food1.getSaturates() + "g  per 100g | " + food1.getSaturatesPerPortion() + "g  per portion \t");
+		System.out.printf("%.1f",  food1.saturatesDailyAmount()); System.out.println("% of the daily amount \n");
+		//Prints out the amount of sugars in 100g, the portion and the percentage of the recommended daily amount 
+		System.out.println("Sugars:  " + food1.getSugars() + "g  per 100g | " + food1.getSugarsPerPortion() + "g  per portion \t");
+		System.out.printf("%.1f",  food1.sugarsDailyAmount()); System.out.println("% of the daily amount \n");
+		//Prints out the amount of salt in 100g, the portion and the percentage of the recommended daily amount 
+		System.out.println("Salt:  " + food1.getSalt() + "g  per 100g | " + food1.getSaltPerPortion() + "g  per portion \t");
+		System.out.printf("%.1f",  food1.saltDailyAmount()); System.out.println("% of the daily amount");
+	}
+}
