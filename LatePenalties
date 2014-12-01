@@ -1,0 +1,98 @@
+/*
+Author: Bradley Dodd
+This program will take 2 user inputs from the LatePenaltiesUser class and use them in some calculations. 
+For the first scheme the program will decrease the mark by 5 each day. 
+For the second scheme the program will decrease the mark by 10% each day.
+
+*/
+public class LatePenalties{
+	//Attributes
+	private double mark;
+	private int nodays;
+	private final double PASSMARK = 40.0;
+	private final double FAILMARK = 20.0;
+	private final double SC2FAILMARK = 25.0;
+	
+	//Constructor 
+	public LatePenalties (int marks, int days){
+		mark = marks; 
+		nodays = days;
+	}
+	//------------------Methods----------------------------- 
+	//Scheme 1 
+	public void scheme1(){
+	//Local Variables 
+	double scheme1Mark=mark;
+	int daysFailSC1 = 0; 
+		//Checks if the input mark is less than or equal to the fail mark. If it is then input value will be printed 
+		if(scheme1Mark <= FAILMARK)
+		{
+			System.out.println("\n The final mark is :  " + scheme1Mark);
+		}
+		//Otherwise it will move into the loop
+		else{
+			//will loop whilst the counter variable 'c' is less than or equal to the number of days the user entered 
+			for (int c=0; c<=nodays; c++)
+			{	
+				//Checks if the mark entered is less than the failing mark for scheme 1. If it is then it will print out the final mark is 20 and then break out of the loop.
+				if(scheme1Mark < FAILMARK)
+				{ 
+					System.out.print("\n The final mark is : 20 ");
+					break;
+				}	
+				//will check if its greater than or equal to the failing mark for scheme 1. If is then it will print out the point in the loop as well as the scheme 1 mark reduced by 5. 
+				else if (scheme1Mark >= FAILMARK)
+					{
+						System.out.print("(" + c + ")" + ":");
+						System.out.print(scheme1Mark + "    ");
+						scheme1Mark=scheme1Mark-5;
+					}
+				//If the scheme mark 1 is greater than or equal to the pass mark then the number of days till failure will be calculated
+				if (scheme1Mark >= PASSMARK)
+				{
+					daysFailSC1 = daysFailSC1 + 1;
+				}
+			}
+		}
+		//Will print out the number of days till failure 
+		System.out.println("\n This work can be submitted up to " + daysFailSC1 + " days before failing");
+	}
+	//Scheme 2 
+	public void scheme2(){
+	//Local Variables 
+	double  scheme2Mark=mark;
+	int daysFailSC2	= 0;
+		//Checks if the scheme 2 mark is less than or equal to the failing mark for scheme 1. If it is then the input value will be printed out
+		if(scheme2Mark <= SC2FAILMARK)
+		{
+			System.out.println("The final mark is :  " + scheme2Mark);
+		}
+		//Otherwise it will move into the loop
+		else {
+			//will loop whilst the counter variable is less than or equal to the number of days input.
+			for (int c=0; c<=nodays; c++)
+			{
+				//Checks if the input mark for scheme 2 is less than the failing mark for scheme 2. If it is then it will print out the final mark as 25 then break out of the loop. 
+				if(scheme2Mark < SC2FAILMARK)
+				{ 
+					System.out.print("\n The final mark is : 25 ");
+					break;
+				}
+					//Otherwise it will check if the scheme 2 mark is greater than or equal to the failing mark for scheme 2 mark. If it is then it will print out the position in the loop and the scheme 2 mark reduced by 10% 
+					else if (scheme2Mark >= SC2FAILMARK)
+					{
+							System.out.print("(" + c + ")" + ":");
+							System.out.printf("%.2f", scheme2Mark); System.out.print ("    ");
+							scheme2Mark=scheme2Mark * 0.90;
+					}
+				//will check if the input for scheme 2 mark is greater than or equal to the passmark. If it is then  it will calculate the dails till failure 
+				if (scheme2Mark >= PASSMARK)
+				{
+					daysFailSC2 = daysFailSC2 + 1;
+				}
+			}
+		}
+		//will print out the number of days till failure 
+		System.out.println("\n This work can be submitted up to " + daysFailSC2 + " days before failing");
+	}
+}
