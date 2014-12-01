@@ -1,0 +1,42 @@
+/*
+Author: Bradley Dodd
+This program will take an input for the mark and an input for the number of days to display. 
+It will check if these inputs are between 0 - 100 for the mark and 0-20 for the number of days. If the inputs are outside these ranges then the user will be asked to input them again. 
+The program will then use these inputs to calculate both of the schemes. 
+*/
+import java.util.*;
+
+public class LatePenaltiesUser{
+	//Main Method 
+	public static void main (String[] args) {
+	//Scanner
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please enter a value between 0 and 100 \n");
+		//Gets an input for the amount the mark
+		int inMarks;
+		do {
+			System.out.println("Please input mark:");
+			inMarks = input.nextInt();
+		}
+		//Checks if the input fat value is between 0 and 100 
+		while (inMarks <0 || inMarks >100);
+		//Gets an input for the number of days
+		int	inDays;
+		do {
+			System.out.println("Please input the number of days to display:");
+			inDays = input.nextInt();
+		}
+		//Checks if the input saturates value is between 0 and 100 
+		while (inDays <0 || inDays >20);
+	
+	//Calculations 
+		//Instantiates the LatePenalties class with values input from keyboard 
+		LatePenalties marks1 = new LatePenalties(inMarks,inDays);
+		//Prints out the method scheme 1 on the input values 	
+		System.out.println("\n Scheme 1:");
+		marks1.scheme1();
+		//Prints out the method scheme 2 on the input values 
+		System.out.println("\n Scheme 2:");
+		marks1.scheme2();
+	}
+}
