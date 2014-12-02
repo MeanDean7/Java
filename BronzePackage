@@ -1,0 +1,13 @@
+/*
+Author: Bradley Dodd
+
+*/
+public class BronzePackage{
+	//Attributes 
+	
+	//Constructor 
+	public BronzePackage (){
+
+	}
+	//------------------Methods----------------------------- 
+}
