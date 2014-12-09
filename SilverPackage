@@ -1,0 +1,22 @@
+/*
+Author: Bradley Dodd
+
+*/
+public class SilverPackage extends BronzePackage{
+	//Attributes 
+	private String packageExtras = "Spotify account included";
+	//Constructor 
+	public SilverPackage (int inDayMinutes, int inEveWekMinutes){
+		super(inDayMinutes, inEveWekMinutes);
+		packageCost = 46.0;
+		costDay = 0.12;
+		costEveWek = 0.0;
+		numberChannels = 130;
+		broadbandLimit = 100;
+		packageExtras = "Spotify Account";
+	}
+	//------------------Methods----------------------------- 
+	public String packageExtras(){
+		return "Spotify Account provided";
+	}
+}
