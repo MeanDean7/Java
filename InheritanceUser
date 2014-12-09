@@ -1,31 +1,14 @@
-/*
-Author: Bradley Dodd
-
-*/
-import java.util.*;
-
-public class InheritanceUser{
-	//Main Method 
-	public static void main (String[] args) {
-	//Scanner
-		Scanner input = new Scanner(System.in);
-		System.out.println("Please enter a value greater than 0 \n");
-		//Gets an input for the amount of daytime minutes used 
-		int inDayMinutes;
-		do {
-			System.out.println("Please input daytime minutes used:");
-			inDayMinutes = input.nextInt();
-		}
-		//Checks if the input value is greater than 0 
-		while (inDayMinutes <=0);
-		//Gets an input for the amount of evening and weekend minutes used 
-		int inEveWekMinutes;
-		do {
-			System.out.println("Please input evening and weekend minutes used:");
-			inEveWekMinutes = input.nextInt();
-		}
-		//Checks if the input value is greater than 0 
-		while (inEveWekMinutes <=0);
-	}
-}	
-		
+if(bronze1.getTotalCost() == silver1.getTotalCost() && bronze1.getTotalCost() == gold1.getTotalCost())
+		System.out.println("Bronze, Silver and Gold packages are the same price");
+			else if(bronze1.getTotalCost() == silver1.getTotalCost() && bronze1.getTotalCost() < gold1.getTotalCost())
+			System.out.println("Bronze and Silver are the cheapest");
+				else if(bronze1.getTotalCost() == gold1.getTotalCost() && bronze1.getTotalCost() < silver1.getTotalCost())
+					System.out.println("Bronze and Gold are the cheapest");
+						else if(silver1.getTotalCost() == gold1.getTotalCost() && silver1.getTotalCost() < bronze1.getTotalCost())
+						System.out.println("Silver and Gold are the cheapest");
+							else if(bronze1.getTotalCost() < silver1.getTotalCost() && bronze1.getTotalCost() < gold1.getTotalCost())
+							System.out.println("Bronze package is the cheapest");
+								else if(silver1.getTotalCost() < gold1.getTotalCost())
+								System.out.println("Silver package is the cheapest");
+									else 
+										System.out.println("Gold package is the cheapest");
