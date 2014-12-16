@@ -1,0 +1,40 @@
+/*
+Author: Bradley Dodd
+This class will have the input data for the customers IDs, bar names and the preferences of the customer. It will then use the methods in the ChocolateBar class to print out the results of the calculations.
+It will print the Names of the chocolate bars, Names of the customers, preferences of the customer, total preference of each chocolate bar, total preferences that are less than 25,
+the most preferred and the least preferred chocolate bar 
+*/
+public class ChocolateBarUser
+{
+    public static void main(String[] args)
+	{
+		//Initialize an array of strings containing the chocolate bar names
+	    String barName[] = new String[]{"BAR1", "BAR2", "BAR3", "BAR4", "BAR5", "BAR6", "BAR7", "BAR8", "BAR9", "BAR10"};
+		//Initialize an array of strings containing the customer IDs 
+		String custName[] = new String[]{"C110", "C120", "C130", "C140", "C150"};
+		//Initialize an array of preferences for each customer, each customer has 10 preferences 
+		int preferences[][] = new int[][]{{1,4,3,6,5,8,7,3,9,10},{10,7,6,5,3,2,8,4,9,1},{6,8,1,4,10,5,3,7,2,9},{7,1,6,5,3,10,8,4,9,2},{7,2,6,5,3,10,8,4,9,1}};
+		//Instantiate the ChocolateBar class with the input values from the arrays 
+		ChocolateBar preferences1 = new ChocolateBar(barName, custName, preferences);
+		//Print out the names of the chocolate bars 
+		System.out.println("The names of the chocolate bars are:");
+		preferences1.barID();
+		//Prints out the names of the customers 
+		System.out.println("\n\nThe names of the customers are:");
+		preferences1.customerID();
+		//Prints out the preferences of each customer for each chocolate bar
+		System.out.println("\n\nThe preferences of customers over chocolate bars are:");
+		preferences1.preferencesArray();
+		//Prints out the total preferences for each chocolate bar 
+		System.out.println("\nThe total preferences of each chocolate bar are:");
+		preferences1.preferenceTotal();
+		//Prints out the chocolate bars that have a total preference less than 25 
+		System.out.println("\n\nThe bar(s) with totals less than 25");
+		preferences1.totalLessThanLimit();
+		//Prints out the chocolate bars that are the most preferred 
+		System.out.println("\nThe bar(s) chosen as a first preference are");
+		preferences1.mostPreferred();
+		//Prints out chocolate bar that is least preferred 
+		preferences1.lowestChocolateBar();
+	}
+}
