@@ -1,0 +1,168 @@
+/*
+Author: Bradley Dodd
+This class has initialized the arrays that is needed for the program to work. It also has methods to print out the array of customer IDs, chocolate bar IDs and the customers preference for each chocolate bar.
+Using these arrays the program can calculate the total preference for each bar, the bars that have a total less than a specified number(currently 25). The most preferred and least preferred chocolate bars are also calculated 
+*/
+public class ChocolateBar{     
+	//Attributes
+    private int preferences[][];
+	private String barName[];
+	private String custName[];
+	private final int PREFLIMIT = 25;
+	private int totalPrefencesArray[] = new int[10];
+	//Constructor
+	public ChocolateBar(String inBarName[],String inCustName[], int inputPreferences[][])
+	{
+		int counterVar1;
+		int counterVar2;
+	    preferences = new int[inCustName.length][inBarName.length];
+		barName = new String[inBarName.length];
+		custName = new String[inCustName.length];
+		//Loop for how many times based on the length of the array of customer names
+		for (counterVar1=0; counterVar1<custName.length; counterVar1++)
+		{
+			//Loop for how many times based on the length of the array of chocolate bar names
+		    for (counterVar2=0; counterVar2<barName.length; counterVar2++)
+			{
+				//Moves the values of the input for preferences into the preferences array
+			    preferences[counterVar1][counterVar2] = inputPreferences[counterVar1][counterVar2];
+			}
+		}
+		//Loops depending on the amount of bars in the array. Each time it moves the next bar name into the array 
+		for (counterVar1=0; counterVar1<inBarName.length; counterVar1++)
+		{
+		    barName[counterVar1] = inBarName[counterVar1];
+		}
+		//Loops depending on the amount of customers in the array. Each time it moves onto the next customer name in the array 
+		for (counterVar1=0; counterVar1<inCustName.length; counterVar1++)
+		{
+		    custName[counterVar1] = inCustName[counterVar1];
+		}
+	}
+	//Method to print out the array containing the preferences, the array of customer names and the array of bar names
+	public void preferencesArray()
+	{
+		int counterVar1;
+		int counterVar2;
+		//Adds a space before the bar names so that it lines up with the rest of the array
+        String outputLine="      ";
+		//Loops depending on how many bars there are in the array. Prints out 1 bar name , then a space 
+        for (counterVar1=0; counterVar1<barName.length; counterVar1++)
+        {
+        	outputLine = outputLine + barName[counterVar1] + "  ";
+        }
+		//Adds a line between the bar names and the rest of the array 
+		outputLine = outputLine + "             _____________________________________________________________________" + "\n";
+		//Loops how many times depending on the amount of customer names in the array 
+        for (counterVar1=0; counterVar1<custName.length; counterVar1++)
+        {
+			//Prints out the customer ID and a space 
+        	outputLine = outputLine + custName[counterVar1] + "   ";
+        	//Loops for how ever long the array of customer names is 
+			for (counterVar2=0; counterVar2<barName.length; counterVar2++)
+        	{
+				//Prints out the preferences for the for chocolates for that customer 
+        		outputLine = outputLine + preferences[counterVar1][counterVar2];
+				//If the preference is double digits then space needs to be added after the number.This keeps the array neat
+				if (preferences[counterVar1][counterVar2]==10)
+				{
+				    outputLine = outputLine + "    ";
+				}
+				else
+				{
+				    outputLine = outputLine + "     ";
+				}
+        	}
+			outputLine = outputLine + "\n";
+        }
+		System.out.print(outputLine);
+		
+	}
+	//Method to prints the names of the bars 
+	public void barID()
+	{
+		for (int counterVar1=0; counterVar1<barName.length; counterVar1++)
+		{
+		    System.out.print(barName[counterVar1]+"  ");
+		}
+	}
+	//Method to print of the customer IDs
+	public void customerID()
+	{
+		for (int counterVar1=0; counterVar1<custName.length; counterVar1++)
+		{
+		    System.out.print(custName[counterVar1]+"  ");
+		}
+	}
+	//Method to calculate the total preferences for each bar
+	public void preferenceTotal()
+	{
+		totalPrefencesArray[0] = 0;
+		int counterVar1;
+		int counterVar2;
+		//Moves the values for preferences into a new array
+		for (counterVar1=0; counterVar1<barName.length; counterVar1++)
+		{
+		    for (counterVar2=0; counterVar2<custName.length; counterVar2++)
+			{
+			    totalPrefencesArray[counterVar1] = totalPrefencesArray[counterVar1] + preferences[counterVar2][counterVar1];
+			}
+		}
+		//Prints out the names of the chocolate bar names
+		for (counterVar1=0; counterVar1<barName.length; counterVar1++)
+		{
+		    System.out.print(barName[counterVar1] + "  ");
+		}
+		System.out.print("\n ");
+		//Prints out the values for the total preference for each bar 
+		for (counterVar1=0; counterVar1<totalPrefencesArray.length; counterVar1++)
+		{
+		    System.out.print(totalPrefencesArray[counterVar1] + "    ");
+		}
+	}
+	//Method to find the chocolate bars that have a total preference less than a certain number 
+	public void totalLessThanLimit()
+	{
+	    for (int counterVar1=0; counterVar1<totalPrefencesArray.length; counterVar1++)
+		{
+		    if (totalPrefencesArray[counterVar1]<PREFLIMIT)
+			{
+			    System.out.println(barName[counterVar1]);
+			}
+		}
+	}
+	//Method to find the most preferred chocolate bar 
+	public void mostPreferred()
+	{
+	    int counterVar1;
+		int counterVar2;;
+		for (counterVar1=0; counterVar1<barName.length; counterVar1++)
+		{
+		    for (counterVar2=0; counterVar2<custName.length; counterVar2++)
+			{
+				//Checks if the preference for the bar is 1. Meaning it is most preferred
+			    if (preferences[counterVar2][counterVar1] == 1)
+				{
+				    System.out.print(barName[counterVar1] + "\n"); break;
+				}
+			}
+		}
+	}
+	//Method to find the bar with the lowest total preference 
+	public void lowestChocolateBar()
+	{
+	    int lowestBarPref = totalPrefencesArray[0];
+		int counterLowestBar = 0;
+        for (int counterVar1=1; counterVar1<totalPrefencesArray.length; counterVar1++)
+		{
+			//Checks if the preference is the is the lower than the lowestBar, if it is it will assign it toe the counterLowestBar 
+		    if (totalPrefencesArray[counterVar1] <= lowestBarPref)
+			{
+			    lowestBarPref = totalPrefencesArray[counterVar1];
+				counterLowestBar = counterVar1;
+			}
+		}
+		System.out.println("\nThe bar(s) with the lowest score of " + lowestBarPref + " is\n"+barName[counterLowestBar]);
+	}
+
+}
